@@ -1,0 +1,307 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-family: "Poppins", serif;
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+    background: #f0f4fb;
+}
+
+.add_shadow {
+    transition: .3s;
+
+    &::before {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+    }
+}
+
+// Button css start
+.btn {
+    position: relative;
+    border: none;
+    outline: none;
+    color: #fff;
+    padding: 0.8rem;
+    width: 100%;
+    cursor: pointer;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+    border-radius: 0.2rem;
+    background: linear-gradient(to right, #09203f 0%, #537895 100%);
+    overflow: hidden;
+
+    &:hover {
+        background: linear-gradient(to right, #537895 0%, #09203f 100%);
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        transform: translateX(-100%);
+        transition: 0.2s;
+    }
+
+    &:hover::before {
+        transform: translateX(100%);
+    }
+}
+// Button css end
+
+// Table css start
+.main_section {
+    padding: 1rem;
+}
+
+.table_section {
+    max-height: 80vh;
+    overflow-x: auto;
+    overflow-y: scroll;
+}
+
+.table_section::-webkit-scrollbar {
+    width: .4rem;
+}
+
+.table_section::-webkit-scrollbar-thumb {
+    background: linear-gradient(to right, #d1d7de 0%, #98c6e9 100%);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+    thead {
+        position: sticky;
+        top: 0;
+        background: linear-gradient(to right, #09203f 0%, #537895 100%);
+        color: #fff;
+    }
+
+    th, td {
+        padding: .9rem 1.1rem;
+        border: 1px solid #fff;
+    }
+
+    th {
+        font-weight: 500;
+        letter-spacing: 0.12rem;
+    }
+
+    tbody {
+        tr:nth-child(even) {
+            background: #fff;
+        }
+
+        tr:hover {
+            background: linear-gradient(to right, #b3c2d5 0%, #e2e8ee 100%);
+            cursor: pointer;
+        }
+
+        .profile {
+            width: 2.8rem;
+            height: 2.8rem;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+        }
+    }
+}
+// Table css end
+
+// Model css start
+.model {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+    transform: scale(0);
+    transition: .3s;
+    z-index: 1000;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.01);
+
+    &.open {
+        z-index: 1000;
+        transform: scale(1);
+    }
+
+    &.close {
+        z-index: -1;
+        transform: scale(0);
+    }
+
+    .model_content {
+        width: 100%;
+        max-width: 25rem;
+        padding: .2rem;
+        background: #fff;
+
+        .model_header {
+            position: relative;
+            margin-bottom: 2rem;
+            width: 100%;
+
+            button {
+                position: absolute;
+                top: .8rem;
+                right: 1.4rem;
+                outline: none;
+                border: none;
+                cursor: pointer;
+                background: transparent;
+
+                svg {
+                    width: 1.2rem;
+                    fill: #537895;
+                }
+            }
+        }
+    }
+}
+
+.model_open_btn {
+    width: inherit;
+    margin-bottom: .8rem;
+    text-align: right;
+    padding: .4rem .8rem;
+}
+// Model css end
+
+// Form css start
+.form_section {
+    padding: 1.2rem;
+    background: #fff;
+    border-radius: 0.2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.01);
+    z-index: 1000;
+
+    .form_title {
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+
+    form {
+        .input_box {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.2rem;
+
+            label {
+                margin-bottom: 0.2rem;
+                color: rgba(0, 0, 0, 0.6);
+                font-weight: 500;
+            }
+
+            input, textarea, select {
+                padding: 0.8rem;
+                outline: none;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                border-radius: 0.2rem;
+                transition: 0.3s;
+
+                &::placeholder {
+                    font-size: 0.9rem;
+                }
+
+                &:focus {
+                    border: 1px solid #537895;
+                }
+            }
+
+            .file_upload_btn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 0.3rem;
+                padding: 0.6rem 0.8rem;
+                color: #fff;
+                background: linear-gradient(to right, #09203f 0%, #537895 100%);
+                border: none;
+                cursor: pointer;
+                width: max-content;
+                border-radius: 0.2rem;
+                transition: 0.3s;
+                outline: none;
+
+                svg {
+                    width: 1.2rem;
+                    height: auto;
+                    fill: #fff;
+                    padding: .2rem .6rem;
+                    border-radius: 0.2rem;
+                }
+            }
+        }
+    }
+}
+// Form css end
+
+// Alert box css start
+.alert_box {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 0.2rem;
+    font-weight: 600;
+    transform: scale(0);
+    transition: .3s;
+
+    &.error {
+        transform: scale(1);
+        color: #9b375c;
+        background: #f4d6e1;
+        padding: 1rem;
+        margin-bottom: 1rem;
+
+        svg {
+            fill: #9b375c;
+        }
+    }
+
+    &.success {
+        transform: scale(1);
+        color: #285223;
+        background: #cdf1c9;
+        padding: 1rem;
+        margin-bottom: 1rem;
+
+        svg {
+            fill: #285223;
+        }
+    }
+
+    &.remove_alert {
+        transform: scale(0);
+    }
+
+    .alert_box_content {
+        display: flex;
+        align-items: center;
+        gap: .6rem;
+
+        svg {
+            width: 2.2rem;
+        }
+    }
+}
+// Alert box css end
